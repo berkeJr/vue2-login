@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <form>
+        
           <div class="form-group">
             <input
               style="margin-top: 15px"
@@ -27,6 +27,12 @@
               placeholder="Password"
               required
             />
+            <div
+              v-if="password.length > 0 && password.length < 6"
+              class="text-danger"
+            >
+              Şifreniz en az 6 karakter uzunluğunda olmalıdır
+            </div>
           </div>
 
           <button
@@ -36,7 +42,6 @@
           >
             Login
           </button>
-        </form>
       </div>
       <div class="col-md-3"></div>
     </div>
@@ -44,23 +49,39 @@
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 export default {
   name: "login",
-  data(){
+  data() {
     return {
       email: "",
-      password: ""
-    }
+      password: "",
+    };
   },
   methods: {
-    login: function(){
+    login: function () {
       console.log("Email: " + this.email);
       console.log("Password: " + this.password);
-    }
-  }
+
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          alert("Hatalı giriş! Mail ve şifrenizi kontrol ediniz!! " + error.message);
+
+        });
+    },
+  },
 };
-
-
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
