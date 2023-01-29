@@ -12,7 +12,7 @@
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Enter email"
+              placeholder="Email"
             />
           </div>
           <div class="form-group">
@@ -25,7 +25,7 @@
             />
           </div>
 
-          <button style="margin-top: 15px" type="submit" class="btn btn-primary">
+          <button style="margin-top: 15px" type="submit" class="btn btn-primary btn-lg">
             Login
           </button>
         </form>
