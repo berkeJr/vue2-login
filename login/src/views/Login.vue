@@ -10,9 +10,11 @@
               style="margin-top: 15px"
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
+              id="email"
+              v-model="email"
               aria-describedby="emailHelp"
               placeholder="Email"
+              required
             />
           </div>
           <div class="form-group">
@@ -20,12 +22,18 @@
               style="margin-top: 15px"
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
+              id="password"
+              v-model="password"
               placeholder="Password"
+              required
             />
           </div>
 
-          <button style="margin-top: 15px" type="submit" class="btn btn-primary btn-lg">
+          <button
+            style="margin-top: 15px"
+            type="submit"
+            class="btn btn-primary btn-lg"
+          >
             Login
           </button>
         </form>
@@ -36,7 +44,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "login",
+  data(){
+    return {
+      email: "",
+      password: ""
+    }
+  },
+  methods: {
+    login: function(){
+      console.log("Email: " + this.email);
+      console.log("Password: " + this.password);
+    }
+  }
+};
+
+
 </script>
 
 <style scoped></style>

@@ -12,6 +12,7 @@
               class="form-control"
               id="fullName"
               placeholder="Full Name"
+              required
             />
           </div>
           <div class="form-group">
@@ -20,8 +21,10 @@
               type="email"
               class="form-control"
               id="email"
+              v-model="email"
               aria-describedby="emailHelp"
               placeholder="Email"
+              required
             />
           </div>
           <div class="form-group">
@@ -30,7 +33,9 @@
               type="password"
               class="form-control"
               id="password"
+              v-model="password"
               placeholder="Password"
+              required
             />
           </div>
           <div class="form-group">
@@ -39,7 +44,9 @@
               type="password"
               class="form-control"
               id="reenterPassword"
+              v-model="reenterPassword"
               placeholder="Password Again"
+              required
             />
           </div>
           <button style="margin-top: 15px" type="submit" class="btn btn-primary btn-lg">
@@ -53,7 +60,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "register",
+  data(){
+    return {
+      email: "",
+      password: "",
+      reenterPassword: ""
+    }
+  },
+  methods: {
+    register: function(){
+      console.log("Email: " + this.email);
+    }
+  }
+
+};
 </script>
 
 <style scoped></style>
